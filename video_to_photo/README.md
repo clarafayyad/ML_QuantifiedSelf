@@ -18,12 +18,24 @@ A comprehensive Python tool for extracting frames from video files using the pow
 
 ### Installation
 
-1. **Install dependencies**:
+1. **Create and activate a virtual environment**:
+   ```bash
+   # Create virtual environment
+   python -m venv venv
+   
+   # Activate virtual environment
+   # On Windows:
+   .\venv\Scripts\activate
+   # On macOS/Linux:
+   source venv/bin/activate
+   ```
+
+2. **Install dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
 
-2. **Basic usage**:
+3. **Basic usage**:
    ```bash
    # Extract all frames from a video
    python video_extractor.py input_video.mp4

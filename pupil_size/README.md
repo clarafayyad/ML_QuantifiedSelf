@@ -17,11 +17,25 @@ A comprehensive computer vision system for detecting and analyzing pupil measure
 ### Installation
 
 1. **Clone/Download** the repository
-2. **Install dependencies**:
+
+2. **Create and activate a virtual environment**:
+   ```bash
+   # Create virtual environment
+   python -m venv venv
+   
+   # Activate virtual environment
+   # On Windows:
+   .\venv\Scripts\activate
+   # On macOS/Linux:
+   source venv/bin/activate
+   ```
+
+3. **Install dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
-3. **Run analysis**:
+
+4. **Run analysis**:
    ```bash
    python pupil_measurement.py
    ```

@@ -10,12 +10,24 @@ A real-time motion tracking application using OpenCV that tracks user-selected p
 - Multiple keyboard controls for interaction
 
 ## Setup
-1. Install dependencies:
+1. Create and activate a virtual environment:
+```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# On Windows:
+.\venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+```
+
+2. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-2. Run the application:
+3. Run the application:
 ```bash
 python motiondetection.py
 ```
