@@ -1,0 +1,78 @@
+2025-06-03 23:01:01,714 - INFO - Starting frame extraction from: video/test_video.mp4
+2025-06-03 23:01:01,714 - INFO - Output directory: basic_extraction\test_video_20250603_230101
+2025-06-03 23:01:45,488 - INFO - Starting frame extraction from: video/test_video.mp4
+2025-06-03 23:01:45,488 - INFO - Output directory: basic_extraction\test_video_20250603_230145
+2025-06-03 23:03:08,617 - INFO - Starting frame extraction from: video/test_video.mp4
+2025-06-03 23:03:08,617 - INFO - Output directory: basic_extraction
+2025-06-03 23:03:08,618 - ERROR - Error during frame extraction: [WinError 123] The filename, directory name, or volume label syntax is incorrect: 'basic_extraction\\frames_folder_2025-06-03 23:03:08'
+2025-06-03 23:03:08,619 - INFO - Starting frame extraction from: video/test_video.mp4
+2025-06-03 23:03:08,619 - INFO - Output directory: segment_extraction\test_video_20250603_230308
+2025-06-03 23:03:08,620 - INFO - Start time: 10s
+2025-06-03 23:03:08,620 - INFO - End time: 30s
+2025-06-03 23:03:08,620 - INFO - Capture rate: 3 fps
+2025-06-03 23:03:08,620 - ERROR - Error during frame extraction: [WinError 123] The filename, directory name, or volume label syntax is incorrect: 'segment_extraction\\test_video_20250603_230308\\frames_folder_2025-06-03 23:03:08'
+2025-06-03 23:03:08,621 - WARNING - No supported video files found in: video/test_video.mp4
+2025-06-03 23:03:08,683 - INFO - Starting frame extraction from: video/test_video.mp4
+2025-06-03 23:03:08,684 - INFO - Output directory: custom_output\test_video_20250603_230308
+2025-06-03 23:03:08,684 - INFO - Capture rate: 15 fps
+2025-06-03 23:03:08,684 - ERROR - Error during frame extraction: [WinError 123] The filename, directory name, or volume label syntax is incorrect: 'custom_output\\test_video_20250603_230308\\frames_folder_2025-06-03 23:03:08'
+2025-06-03 23:07:22,577 - INFO - Starting frame extraction from: video/test_video.mp4
+2025-06-03 23:07:22,577 - INFO - Output directory: basic_extraction
+2025-06-03 23:07:22,579 - ERROR - Error during frame extraction: [WinError 123] The filename, directory name, or volume label syntax is incorrect: 'C:\\Users\\aimen\\AppData\\Local\\Temp\\tmpxeg7f0f7\\frames_folder_2025-06-03 23:07:22'
+2025-06-03 23:07:22,580 - INFO - Starting frame extraction from: video/test_video.mp4
+2025-06-03 23:07:22,580 - INFO - Output directory: segment_extraction\test_video_20250603_230722
+2025-06-03 23:07:22,580 - INFO - Start time: 10s
+2025-06-03 23:07:22,580 - INFO - End time: 30s
+2025-06-03 23:07:22,580 - INFO - Capture rate: 3 fps
+2025-06-03 23:07:22,581 - ERROR - Error during frame extraction: [WinError 123] The filename, directory name, or volume label syntax is incorrect: 'C:\\Users\\aimen\\AppData\\Local\\Temp\\tmpscjem9ul\\frames_folder_2025-06-03 23:07:22'
+2025-06-03 23:07:22,581 - WARNING - No supported video files found in: video/test_video.mp4
+2025-06-03 23:07:22,597 - INFO - Starting frame extraction from: video/test_video.mp4
+2025-06-03 23:07:22,597 - INFO - Output directory: custom_output\test_video_20250603_230722
+2025-06-03 23:07:22,598 - INFO - Capture rate: 15 fps
+2025-06-03 23:07:22,598 - ERROR - Error during frame extraction: [WinError 123] The filename, directory name, or volume label syntax is incorrect: 'C:\\Users\\aimen\\AppData\\Local\\Temp\\tmpjgmqbstt\\frames_folder_2025-06-03 23:07:22'
+2025-06-03 23:09:48,943 - INFO - Starting frame extraction from: video/test_video.mp4
+2025-06-03 23:09:48,943 - INFO - Output directory: basic_extraction
+2025-06-03 23:09:48,946 - ERROR - Error during frame extraction: [WinError 123] The filename, directory name, or volume label syntax is incorrect: 'C:\\Users\\aimen\\AppData\\Local\\Temp\\tmpjqapgdcy\\frames_folder_2025-06-03 23:09:48'
+2025-06-03 23:09:48,946 - INFO - Starting frame extraction from: video/test_video.mp4
+2025-06-03 23:09:48,947 - INFO - Output directory: segment_extraction
+2025-06-03 23:09:48,947 - INFO - Start time: 10s
+2025-06-03 23:09:48,947 - INFO - End time: 30s
+2025-06-03 23:09:48,948 - INFO - Capture rate: 3 fps
+2025-06-03 23:09:48,948 - ERROR - Error during frame extraction: [WinError 123] The filename, directory name, or volume label syntax is incorrect: 'C:\\Users\\aimen\\AppData\\Local\\Temp\\tmpoze7t5ie\\frames_folder_2025-06-03 23:09:48'
+2025-06-03 23:09:48,949 - WARNING - No supported video files found in: video/test_video.mp4
+2025-06-03 23:09:48,964 - INFO - Starting frame extraction from: video/test_video.mp4
+2025-06-03 23:09:48,965 - INFO - Output directory: custom_output\test_video_1
+2025-06-03 23:09:48,965 - INFO - Capture rate: 15 fps
+2025-06-03 23:09:48,966 - ERROR - Error during frame extraction: [WinError 123] The filename, directory name, or volume label syntax is incorrect: 'C:\\Users\\aimen\\AppData\\Local\\Temp\\tmpug0wv3xe\\frames_folder_2025-06-03 23:09:48'
+2025-06-03 23:10:14,815 - INFO - Starting frame extraction from: video/test_video.mp4
+2025-06-03 23:10:14,815 - INFO - Output directory: basic_extraction
+2025-06-03 23:10:14,817 - ERROR - Error during frame extraction: [WinError 123] The filename, directory name, or volume label syntax is incorrect: 'C:\\Users\\aimen\\AppData\\Local\\Temp\\tmpdx6aumaw\\frames_folder_2025-06-03 23:10:14'
+2025-06-03 23:10:14,818 - INFO - Starting frame extraction from: video/test_video.mp4
+2025-06-03 23:10:14,818 - INFO - Output directory: segment_extraction
+2025-06-03 23:10:14,818 - INFO - Start time: 10s
+2025-06-03 23:10:14,818 - INFO - End time: 30s
+2025-06-03 23:10:14,818 - INFO - Capture rate: 3 fps
+2025-06-03 23:10:14,819 - ERROR - Error during frame extraction: [WinError 123] The filename, directory name, or volume label syntax is incorrect: 'C:\\Users\\aimen\\AppData\\Local\\Temp\\tmpaoht10nd\\frames_folder_2025-06-03 23:10:14'
+2025-06-03 23:10:14,819 - WARNING - No supported video files found in: video/test_video.mp4
+2025-06-03 23:10:14,835 - INFO - Starting frame extraction from: video/test_video.mp4
+2025-06-03 23:10:14,835 - INFO - Output directory: custom_output\test_video_2
+2025-06-03 23:10:14,835 - INFO - Capture rate: 15 fps
+2025-06-03 23:10:14,836 - ERROR - Error during frame extraction: [WinError 123] The filename, directory name, or volume label syntax is incorrect: 'C:\\Users\\aimen\\AppData\\Local\\Temp\\tmpl6kziokj\\frames_folder_2025-06-03 23:10:14'
+2025-06-03 23:13:24,117 - INFO - Starting frame extraction from: video/test_video.mp4
+2025-06-03 23:13:24,117 - INFO - Output directory: basic_extraction
+2025-06-03 23:13:24,228 - INFO - Video FPS: 29.97, Total frames: 887, Duration: 29.6s
+2025-06-03 23:13:24,228 - INFO - Using original FPS: 29.97
+2025-06-03 23:13:33,338 - INFO - Extracted 887 frames to: basic_extraction
+2025-06-03 23:13:33,339 - INFO - Starting frame extraction from: video/test_video.mp4
+2025-06-03 23:13:33,339 - INFO - Output directory: segment_extraction
+2025-06-03 23:13:33,348 - INFO - Video FPS: 29.97, Total frames: 887, Duration: 29.6s
+2025-06-03 23:13:33,348 - INFO - Capture rate: 3 fps, Frame skip: 9
+2025-06-03 23:13:33,348 - INFO - Start time: 10s (frame 299)
+2025-06-03 23:13:33,348 - INFO - End time: 30s (frame 887)
+2025-06-03 23:13:34,689 - INFO - Extracted 66 frames to: segment_extraction
+2025-06-03 23:13:34,690 - WARNING - No supported video files found in: video/test_video.mp4
+2025-06-03 23:13:34,703 - INFO - Starting frame extraction from: video/test_video.mp4
+2025-06-03 23:13:34,703 - INFO - Output directory: custom_output\test_video_3
+2025-06-03 23:13:34,712 - INFO - Video FPS: 29.97, Total frames: 887, Duration: 29.6s
+2025-06-03 23:13:34,712 - INFO - Using original FPS: 29.97
+2025-06-03 23:13:43,787 - INFO - Extracted 887 frames to: custom_output\test_video_3

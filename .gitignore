@@ -1,2 +1,6 @@
 /motion_tracker_head/venv
 /pupil_size/venv
+/video_to_photo/venv
+/video_to_photo/video
+/video_to_photo/frames
+/video_to_photo/__pycache__

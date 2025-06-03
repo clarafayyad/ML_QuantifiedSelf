@@ -1,0 +1,4 @@
+timestamp,pupil_diameter_mm,iris_diameter_mm,pupil_iris_ratio,pupil_center_x,pupil_center_y,iris_center_x,iris_center_y,gaze_direction,gaze_offset_x_normalized,gaze_offset_y_normalized,gaze_magnitude,overall_confidence,concentricity_score,pupil_circularity,pupil_classification,pupil_size_category,pupil_detected,iris_detected
+2025-06-03T22:18:30.333790,1.6388888888888888,11.8,0.13888888888888887,179,143,152,156,Up-Right,0.375,-0.18055555555555555,0.41620344621588046,0.5918307040072224,0.16759310756823909,0.40394950222671394,Miosis,Small,True,True
+2025-06-03T23:26:17.883892,0.0,11.8,0.0,2,124,0,0,Center,0.0,0.0,0.0,0.2646049323197281,0.0,0.35280657642630414,Unknown,Unknown,True,False
+2025-06-03T23:27:05.950305,1.7811320754716982,11.8,0.1509433962264151,175,178,190,170,Down-Left,-0.2830188679245283,0.1509433962264151,0.32075471698113206,0.7194968553459119,0.3584905660377359,0.7503291503697044,Miosis,Small,True,True
