@@ -878,6 +878,42 @@ Classification: {classification.replace(chr(10), ' ')}
     except Exception as e:
         print(f"Error in display: {e}")
 
+
+def get_pupil_measurements(image_path, config=None, eye_index=0):
+    """Get pupil measurements as a dictionary - saves to CSV automatically"""
+    success, result = analyze_pupil_comprehensive(image_path, config, eye_index, save_to_csv=True, verbose=False)
+
+    if success:
+        return {
+            'success': True,
+            'pupil_diameter_mm': result.pupil_diameter_mm,
+            'iris_diameter_mm': result.iris_diameter_mm,
+            'pupil_iris_ratio': result.pupil_iris_ratio,
+            'gaze_direction': result.gaze_direction,
+            'overall_confidence': result.overall_confidence,
+            'pupil_classification': result.pupil_classification,
+            'pupil_detected': result.pupil_detected,
+            'iris_detected': result.iris_detected,
+            'pupil_center_x': result.pupil_center_x,
+            'pupil_center_y': result.pupil_center_y,
+            'iris_center_x': result.iris_center_x,
+            'iris_center_y': result.iris_center_y,
+            'gaze_magnitude': result.gaze_magnitude,
+            'concentricity_score': result.concentricity_score,
+            'pupil_circularity': result.pupil_circularity
+        }
+    else:
+        return {
+            'success': False,
+            'error': result._processing_errors
+        }
+
+
+def measure_pupil_from_image_improved(image_path, config=None, eye_index=0):
+    """Backwards compatible function - returns boolean success, saves to CSV"""
+    success, result = analyze_pupil_comprehensive(image_path, config, eye_index, save_to_csv=True, verbose=False)
+    return success
+
 # Example usage
 if __name__ == "__main__":
     config = PupilDetectionConfig()
@@ -913,38 +949,4 @@ if __name__ == "__main__":
             print(f"✓ Data saved to CSV: {config.csv_output_dir}/{config.csv_filename}")
         else:
             print("Analysis failed")
-        
-    # Functions for programmatic use
-    def get_pupil_measurements(image_path, config=None, eye_index=0):
-        """Get pupil measurements as a dictionary - saves to CSV automatically"""
-        success, result = analyze_pupil_comprehensive(image_path, config, eye_index, save_to_csv=True, verbose=False)
-        
-        if success:
-            return {
-                'success': True,
-                'pupil_diameter_mm': result.pupil_diameter_mm,
-                'iris_diameter_mm': result.iris_diameter_mm,
-                'pupil_iris_ratio': result.pupil_iris_ratio,
-                'gaze_direction': result.gaze_direction,
-                'overall_confidence': result.overall_confidence,
-                'pupil_classification': result.pupil_classification,
-                'pupil_detected': result.pupil_detected,
-                'iris_detected': result.iris_detected,
-                'pupil_center_x': result.pupil_center_x,
-                'pupil_center_y': result.pupil_center_y,
-                'iris_center_x': result.iris_center_x,
-                'iris_center_y': result.iris_center_y,
-                'gaze_magnitude': result.gaze_magnitude,
-                'concentricity_score': result.concentricity_score,
-                'pupil_circularity': result.pupil_circularity
-            }
-        else:
-            return {
-                'success': False,
-                'error': result._processing_errors
-            }
-    
-    def measure_pupil_from_image_improved(image_path, config=None, eye_index=0):
-        """Backwards compatible function - returns boolean success, saves to CSV"""
-        success, result = analyze_pupil_comprehensive(image_path, config, eye_index, save_to_csv=True, verbose=False)
-        return success
+
