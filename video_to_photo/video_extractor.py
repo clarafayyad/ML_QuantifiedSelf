@@ -102,11 +102,18 @@ class VideoFrameExtractor:
                 
                 if ret:
                     # Flip frame 180 degrees
-                    frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
+                    # frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
                     
-                    # Save frame with simple naming: frame_001.jpg
-                    frame_filename = f"frame_{frame_count + 1:03d}.jpg"
+                    # Calculate the timestamp in seconds
+                    timestamp_seconds = current_frame / fps
+
+                    # Round to nearest 0.5 seconds
+                    timestamp_rounded = round(timestamp_seconds * 2) / 2
+
+                    # Format filename with the timestamp
+                    frame_filename = f"frame_{timestamp_rounded:.1f}s.jpg"
                     frame_path = os.path.join(output_dir, frame_filename)
+
                     cv2.imwrite(frame_path, frame)
                     frame_count += 1
                 
