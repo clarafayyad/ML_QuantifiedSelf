@@ -102,7 +102,7 @@ class VideoFrameExtractor:
                 
                 if ret:
                     # Flip frame 180 degrees
-                    frame = cv2.rotate(frame, cv2.ROTATE_180)
+                    frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
                     
                     # Save frame with simple naming: frame_001.jpg
                     frame_filename = f"frame_{frame_count + 1:03d}.jpg"
