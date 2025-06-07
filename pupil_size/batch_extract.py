@@ -24,6 +24,6 @@ for filename in os.listdir(image_folder):
             results.append(measurement)
 
 results_df = pd.DataFrame(results)
-results_df.to_csv("pupil_size_extracted_horror.csv", index=False)
+results_df.to_csv("../data_collection/source_data/clara/pupil_size_extracted_horror.csv", index=False)
 
 print(f"Successfully processed {len(results)} images")

@@ -17,7 +17,7 @@ def run_simple_example():
     extractor = VideoFrameExtractor()
     
     # Video file path
-    video_path = "Videos/kenji_horror.mov"
+    video_path = "Videos/clara_horror.MOV"
     
     if os.path.exists(video_path):
         # Extract frames
