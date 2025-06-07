@@ -4,3 +4,4 @@
 /video_to_photo/video
 /video_to_photo/frames
 /video_to_photo/__pycache__
+.venv/
