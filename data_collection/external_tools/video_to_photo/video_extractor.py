@@ -102,7 +102,7 @@ class VideoFrameExtractor:
                 
                 if ret:
                     # Flip frame 180 degrees
-                    # frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
+                    frame = cv2.rotate(frame, cv2.ROTATE_180)
                     
                     # Calculate the timestamp in seconds
                     timestamp_seconds = current_frame / fps

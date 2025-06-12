@@ -2,7 +2,7 @@ import os
 from pupil_measurement import get_pupil_measurements
 import pandas as pd
 
-image_folder = "../video_to_photo/frames/"
+image_folder = "../video_to_photo/frames_aimen_documentary"
 results = []
 
 for filename in os.listdir(image_folder):
@@ -24,6 +24,7 @@ for filename in os.listdir(image_folder):
             results.append(measurement)
 
 results_df = pd.DataFrame(results)
-results_df.to_csv("../data_collection/source_data/clara/pupil_size_extracted_horror.csv", index=False)
+results_df.to_csv("../aimen/pupil_size_extracted_documentary.csv", index=False)
 
 print(f"Successfully processed {len(results)} images")
+
