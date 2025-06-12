@@ -17,13 +17,13 @@ def run_simple_example():
     extractor = VideoFrameExtractor()
     
     # Video file path
-    video_path = "Videos/clara_horror.MOV"
+    video_path = "doc_filmpje.mp4"
     
     if os.path.exists(video_path):
         # Extract frames
         success, output_dir = extractor.extract_frames(
             video_path=video_path,
-            output_dir="frames",
+            output_dir="frames_aimen_documentary",
             capture_rate=2  # Extract 1 frame per second
         )
         
