@@ -8,13 +8,14 @@ from sklearn.feature_selection import RFECV
 from sklearn.impute import SimpleImputer
 from optuna.integration import OptunaSearchCV
 from optuna.distributions import IntDistribution, FloatDistribution, CategoricalDistribution
+from sklearn.model_selection import StratifiedShuffleSplit
 
 def model_pipeline(
     df: pd.DataFrame,
     model_factory,            # e.g. lambda **p: RandomForestClassifier(**p)
     non_numerical_columns=None,
     normalize='global',        # 'global', 'per_participant', or None
-    test_val_split=0.1,
+    test_val_split=0.3,
     param_distributions=None,  # dict of {param: tuple or list or optuna Distribution}
     n_trials=50,               # how many Optuna trials
     search_cv=3,               # inner CV folds
@@ -84,33 +85,30 @@ def model_pipeline(
         test_df  = df[df['participant'] == test_p]
 
         X_train, y_train = train_df[features], train_df['genre_encoded']
-        X_test_full, y_test_full = test_df[features], test_df['genre_encoded']
+        X_test, y_test = test_df[features], test_df['genre_encoded']
 
-        # 8) carve off a 10% validation from your hold‐out
-        X_test, X_val, y_test, y_val = train_test_split(
-            X_test_full, y_test_full,
-            test_size=test_val_split,
-            stratify=y_test_full,
-            random_state=42
-        )
-
-        # 9) Build your Pipeline steps
+        # 9) BuildPipeline steps
         steps = []
 
         steps = [('imputer', SimpleImputer(strategy='mean'))]  # Add this
 
         if use_rfe:
-            # RFECV will do backward selection **inside** each cv‐fold
+            # create a StratifiedShuffleSplit for inner‐loop validation
+            inner_cv = StratifiedShuffleSplit(
+                n_splits=search_cv,
+                test_size=test_val_split,
+                random_state=42
+            )
             steps.append((
-              'feature_selection',
-              RFECV(
-                estimator = model_factory(),
-                step      = 1,
-                cv        = search_cv,
-                scoring   = 'f1_weighted',
-                n_jobs    = -1,
-                min_features_to_select=10
-              )
+                'feature_selection',
+                RFECV(
+                    estimator=model_factory(),
+                    step=1,
+                    cv=inner_cv,                   # use the shuffle‐split here
+                    scoring='f1_weighted',
+                    n_jobs=-1,
+                    min_features_to_select=10
+                )
             ))
         # final estimator named 'clf' so we can prefix hyperparams with 'clf__'
         steps.append(('clf', model_factory()))
@@ -161,17 +159,6 @@ def model_pipeline(
                output_dict=True, zero_division=0
           )
         }
-
-        # 14) Validation set performance
-        y_val_pred = best_model.predict(X_val)
-        print("Validation performance:")
-        print(classification_report(y_val, y_val_pred,
-              target_names=genre_le.classes_, zero_division=0))
-        results['reports'][test_p]['val_report'] = classification_report(
-            y_val, y_val_pred,
-            target_names=genre_le.classes_,
-            output_dict=True, zero_division=0
-        )
 
     results['avg_weighted_f1'] = np.mean(results['weighted_f1s'])
     print(f"\n=== Avg weighted F1: {results['avg_weighted_f1']:.3f} ===")
