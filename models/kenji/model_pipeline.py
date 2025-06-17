@@ -5,6 +5,7 @@ from sklearn.metrics import classification_report, f1_score
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.feature_selection import RFECV
+from sklearn.impute import SimpleImputer
 from optuna.integration import OptunaSearchCV
 from optuna.distributions import IntDistribution, FloatDistribution, CategoricalDistribution
 
@@ -30,7 +31,11 @@ def model_pipeline(
     # 2) Normalize
     if normalize == 'global':
         for c in numerical_columns:
-            df[c] = (df[c] - df[c].mean()) / df[c].std()
+            std = df[c].std()
+            if std != 0 and not np.isnan(std):
+                df[c] = (df[c] - df[c].mean()) / std
+            else:
+                print(f"Skipping normalization for constant column: {c}")
     elif normalize == 'per_participant':
         df[numerical_columns] = (
             df.groupby('participant')[numerical_columns]
@@ -69,7 +74,7 @@ def model_pipeline(
             raise ValueError(f"Cannot interpret {name} spec={spec}")
 
     results = {
-      'reports':{}, 'macro_f1s':[], 'feature_importances':{}, 'avg_macro_f1':None
+      'reports':{}, 'weighted_f1s':[], 'feature_importances':{}, 'avg_weighted_f1':None
     }
 
     # 7) Loop over each LOPO fold
@@ -91,6 +96,9 @@ def model_pipeline(
 
         # 9) Build your Pipeline steps
         steps = []
+
+        steps = [('imputer', SimpleImputer(strategy='mean'))]  # Add this
+
         if use_rfe:
             # RFECV will do backward selection **inside** each cv‐fold
             steps.append((
@@ -99,7 +107,7 @@ def model_pipeline(
                 estimator = model_factory(),
                 step      = 1,
                 cv        = search_cv,
-                scoring   = 'f1_macro',
+                scoring   = 'f1_weighted',
                 n_jobs    = -1,
                 min_features_to_select=10
               )
@@ -133,20 +141,21 @@ def model_pipeline(
         if hasattr(best_model, "named_steps") and 'clf' in best_model.named_steps:
             m = best_model.named_steps['clf']
             if hasattr(m, "feature_importances_"):
+                if 'feature_selection' in best_model.named_steps:
+                    selected_mask = best_model.named_steps['feature_selection'].get_support()
+                    selected_features = np.array(features)[selected_mask]
+                else:
+                    selected_features = features
                 imp = m.feature_importances_
-                # Get mask of selected features from RFECV
-                selected_mask = best_model.named_steps['feature_selection'].get_support()
-                selected_features = np.array(features)[selected_mask]
-                # Align feature names with importances
                 df_imp = (pd.DataFrame({'feature': selected_features, 'importance': imp})
                             .sort_values('importance', ascending=False))
                 results['feature_importances'][test_p] = df_imp
 
         # 13) record metrics
-        f1 = f1_score(y_test, y_pred, average='macro')
-        results['macro_f1s'].append(f1)
+        f1 = f1_score(y_test, y_pred, average='weighted')
+        results['weighted_f1s'].append(f1)
         results['reports'][test_p] = {
-          'f1_macro': f1,
+          'f1_weighted': f1,
           'test_report': classification_report(
                y_test, y_pred, target_names=genre_le.classes_,
                output_dict=True, zero_division=0
@@ -164,6 +173,6 @@ def model_pipeline(
             output_dict=True, zero_division=0
         )
 
-    results['avg_macro_f1'] = np.mean(results['macro_f1s'])
-    print(f"\n=== Avg Macro F1: {results['avg_macro_f1']:.3f} ===")
+    results['avg_weighted_f1'] = np.mean(results['weighted_f1s'])
+    print(f"\n=== Avg weighted F1: {results['avg_weighted_f1']:.3f} ===")
     return results
